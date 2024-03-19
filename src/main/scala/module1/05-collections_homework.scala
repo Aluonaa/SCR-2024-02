@@ -1,8 +1,6 @@
-import scala.annotation.tailrec
-import scala.collection.mutable
 import scala.util.Random
 
-class Experiment() {
+class Experiment {
   private val ballsUrn: List[Int] = List(1, 0, 1, 0, 1, 0)
 }
 
