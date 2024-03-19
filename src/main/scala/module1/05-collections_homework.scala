@@ -9,13 +9,7 @@ class Experiment() {
 object Experiment{
   /** Методу подается количество урн, содержащих по 6 шаров **/
   def startChecking(urnsCount: Int): Unit = {
-    @tailrec
-    def loop(acc: mutable.ArraySeq[Experiment] = mutable.ArraySeq[Experiment]()): mutable.ArraySeq[Experiment] = {
-      if (acc.size < urnsCount) loop(acc :+ new Experiment)
-      else acc
-    }
-
-    val result: Double = loop().map(v => getRandomBalls(v.ballsUrn)).count(v => v)
+    val result: Double = (0 to 10000).map(_ => getRandomBalls(new Experiment().ballsUrn)).toList.count(v => v)
     println(s"Result is ${result / urnsCount}")
   }
 
