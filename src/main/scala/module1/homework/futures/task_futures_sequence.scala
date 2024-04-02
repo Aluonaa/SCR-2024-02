@@ -5,7 +5,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.{ExecutionContext, Future, Promise}
 import scala.util.{Failure, Success}
 
-object task_futures_sequence extends App {
+object task_futures_sequence{
 
   /**
    * В данном задании Вам предлагается реализовать функцию fullSequence,
