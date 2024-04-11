@@ -5,7 +5,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.{ExecutionContext, Future, Promise}
 import scala.util.{Failure, Success}
 
-object task_futures_sequence{
+object task_futures_sequence extends App {
 
   /**
    * В данном задании Вам предлагается реализовать функцию fullSequence,
@@ -28,10 +28,11 @@ object task_futures_sequence{
     def loop(futures: List[Future[A]] = futures, success: List[A] = List(), fail: List[Throwable] = List()): Unit = futures match {
       case Nil => promise.success(success.reverse, fail.reverse)
       case ::(head, _) => head.onComplete({
-      case Success(v) => loop(futures.tail, v :: success, fail)
-      case Failure(e) => loop(futures.tail, success, e :: fail)
+        case Success(v) => loop(futures.tail, v :: success, fail)
+        case Failure(e) => loop(futures.tail, success, e :: fail)
       })
     }
+
     loop()
     promise.future
   }
